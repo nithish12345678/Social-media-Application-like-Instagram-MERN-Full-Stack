@@ -1,5 +1,6 @@
 const mongoose =require("mongoose");
-const {JWT_SECRET}=require("../keys");
+require('dotenv').config()
+const JWT_SECRET=process.env.JWT_SECRET;
 const user=mongoose.model("user");
 const jwt=require("jsonwebtoken");
 
