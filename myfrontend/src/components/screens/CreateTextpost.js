@@ -12,7 +12,7 @@ const CreateTextpost = ()=>{
   
   
    const postDetails = ()=>{
-    fetch("http://localhost:5000/createpost",{
+    fetch(`${process.env.React_APP_Base_URL}/createpost`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json",

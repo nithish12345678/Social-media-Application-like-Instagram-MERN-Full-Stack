@@ -48,7 +48,7 @@ const NavBar = ()=>{
 
      const fetchUsers = (query)=>{
         setSearch(query)
-        fetch('http://localhost:5000/search-users',{
+        fetch(`${process.env.React_APP_Base_URL}/search-users`,{
           method:"post",
           headers:{
             "Content-Type":"application/json"

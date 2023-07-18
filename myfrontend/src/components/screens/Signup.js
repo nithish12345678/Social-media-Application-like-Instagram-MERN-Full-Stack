@@ -37,7 +37,7 @@ const Signup  = ()=>{
             return
         }
         console.log("uploading");
-        fetch("http://localhost:5000/signup",{
+        fetch(`${process.env.React_APP_Base_URL}/signup`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

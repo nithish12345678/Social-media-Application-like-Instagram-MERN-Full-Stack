@@ -24,7 +24,7 @@ const SubscribedUserPosts=()=>{
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/subposts', {
+        fetch(`${process.env.React_APP_Base_URL}/subposts`, {
             method:"get",
             headers: {
                     "authentication":localStorage.getItem("jwt")
@@ -44,7 +44,7 @@ const SubscribedUserPosts=()=>{
 
     const likePost = (postId) => {
         console.log('like post',postId);
-        fetch('http://localhost:5000/like', {
+        fetch(`${process.env.React_APP_Base_URL}/like`, {
             method: "post",
             headers: {
                 "Content-Type":"application/json",
@@ -75,7 +75,7 @@ const SubscribedUserPosts=()=>{
 
       const addComment = (postId,com) => {
         console.log('Function :addComment');
-        fetch('http://localhost:5000/addComment', {
+        fetch(`${process.env.React_APP_Base_URL}/addComment`, {
             method: "put",
             headers: {
                 "Content-Type":"application/json",
@@ -104,7 +104,7 @@ const SubscribedUserPosts=()=>{
       };
       const deleteComment = (postId,com) => {
         console.log('delete comment',postId);
-        fetch('http://localhost:5000/deleteComment', {
+        fetch(`${process.env.React_APP_Base_URL}/deleteComment`, {
             method: "put",
             headers: {
                 "Content-Type":"application/json",
@@ -136,7 +136,7 @@ const SubscribedUserPosts=()=>{
     
       const unlikePost = (id) => {
         console.log('Function 2');
-        fetch('http://localhost:5000/unlike', {
+        fetch(`${process.env.React_APP_Base_URL}/unlike`, {
             method: "put",
             headers: {
                 "Content-Type":"application/json",
@@ -171,7 +171,7 @@ const SubscribedUserPosts=()=>{
     const deletePost = (postid) => {
 
          console.log("hello",postid);
-        fetch(`http://localhost:5000/deletepost/${postid}`, {
+        fetch(`${process.env.React_APP_Base_URL}/deletepost/${postid}`, {
             method: "delete",
             headers: {
                 "authentication": localStorage.getItem("jwt")

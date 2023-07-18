@@ -7,7 +7,7 @@ const Profile  = ()=>{
     const [image,setImage] = useState("")
     const [url,setUrl] = useState("")
     useEffect(()=>{
-       fetch('http://localhost:5000/myposts',{
+       fetch(`${process.env.React_APP_Base_URL}/myposts`,{
            headers:{
                "authentication":localStorage.getItem("jwt")
            }
@@ -21,7 +21,7 @@ const Profile  = ()=>{
 
     useEffect(()=>{
        if(url){
-        fetch('http://localhost:5000/updatepic',{
+        fetch(`${process.env.React_APP_Base_URL}/updatepic`,{
             method:"put",
             headers:{
                 "Content-Type":"application/json",
