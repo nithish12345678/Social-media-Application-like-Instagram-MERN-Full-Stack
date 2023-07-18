@@ -3,13 +3,17 @@ const mongoose =require("mongoose");
 
 
 const postSchema= new mongoose.Schema({
+
+   type:{
+      type:String,
+      required:true
+   },
     title:{
         type:String,
         required:true
      },
      body:{
-        type:String,
-        required:true
+        type:String
      },
      photo:{
         type:String,

@@ -20,6 +20,7 @@ const userSchema=new mongoose.Schema({
  },
  pic:{
    type:String,
+   default:"https://moonvillageassociation.org/wp-content/uploads/2018/06/default-profile-picture1.jpg"
 },
  followers:[{
    type:mongoose.Schema.ObjectId,

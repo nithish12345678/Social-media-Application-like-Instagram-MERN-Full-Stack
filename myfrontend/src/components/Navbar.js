@@ -15,11 +15,14 @@ const NavBar = ()=>{
      const renderList = ()=>{
        if(state){
            return [
-            <li key="1"><i  data-target="modal1" className="large material-icons modal-trigger" style={{color:"black"}}>search</i></li>,
+            <li key="0"><i  data-target="modal1" className="large material-icons modal-trigger" style={{color:"black"}}>search</i></li>,
+            <li key="1"><Link to="/">Home</Link></li>,
+           
             <li key="2"><Link to="/profile">Profile</Link></li>,
             <li key="3"><Link to="/create">Create Post</Link></li>,
-            <li key="4"><Link to="/myfollowingpost">My following Posts</Link></li>,
-            <li  key="5">
+            <li key="4"><Link to="/createtext">Share Text </Link></li>,
+            <li key="5"><Link to="/myfollowingpost">My following Posts</Link></li>,
+            <li  key="6">
              <button className="btn #c62828 red darken-3"
             onClick={()=>{
               localStorage.clear()
@@ -45,7 +48,7 @@ const NavBar = ()=>{
 
      const fetchUsers = (query)=>{
         setSearch(query)
-        fetch('/search-users',{
+        fetch('http://localhost:5000/search-users',{
           method:"post",
           headers:{
             "Content-Type":"application/json"
@@ -55,13 +58,16 @@ const NavBar = ()=>{
           })
         }).then(res=>res.json())
         .then(results=>{
-          setUserDetails(results.user)
+
+          console.log(results);
+          setUserDetails(results.users)
         })
      }
     return(
         <nav>
         <div className="nav-wrapper white">
-          <Link to={state?"/":"/signin"} className="brand-logo left">Instagram</Link>
+        
+          <Link to={state?"/":"/signin"} className=" brand-logo left">Mediachat</Link>
           <ul id="nav-mobile" className="right">
              {renderList()}
   
@@ -76,19 +82,41 @@ const NavBar = ()=>{
             onChange={(e)=>fetchUsers(e.target.value)}
             />
              <ul className="collection">
-               {userDetails.map(item=>{
-                 return <Link to={item._id !== state._id ? "/profile/"+item._id:'/profile'} onClick={()=>{
-                   M.Modal.getInstance(searchModal.current).close()
-                   setSearch('')
-                 }}><li className="collection-item">{item.email}</li></Link> 
-               })}
+               {userDetails ?userDetails.map(item=>{
+                 return <>      
+                  <h4 className="card-title">
+                        
+                        <Link className="modal-close waves-effect btn-flat" onClick={()=>setSearch('')} to={ (item._id==state._id)? "/profile": `/profile/${item._id}`}>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+
+
+                     
+                        <img src={item.pic} alt={item.userName} style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />
+                      
+                       <span>{item.userName}</span>
+
+                       
+                        </div>
+                       </Link>
+                       </h4>          
+                 </>
+                 
+                 
+                 
+                //  <Link to={item._id !== state._id ? "/profile/"+item._id:'/profile'} onClick={()=>{
+                //    M.Modal.getInstance(searchModal.current).close()
+                //    setSearch('')
+                //  }}><li className="collection-item">{item.email}</li></Link> 
+               })  : <></>}
                
               </ul>
           </div>
-          <div className="modal-footer">
+          <div className="">
             <button className="modal-close waves-effect waves-green btn-flat" onClick={()=>setSearch('')}>close</button>
           </div>
         </div>
+
+
       </nav>
     )
 }

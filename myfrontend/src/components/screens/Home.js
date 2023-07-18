@@ -6,6 +6,7 @@ import { IconButton } from '@material-ui/core';
 import { Favorite } from '@material-ui/icons';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CommentIcon from '@material-ui/icons/Comment';
+import { grey } from '@material-ui/core/colors';
 // import { post } from '../../../../backend/routes/post';
 
 const Home = () => {
@@ -195,31 +196,52 @@ const Home = () => {
                 data.map((post)=>{
                     return (
                        <div className="home-card" key={post._id}>
-                            <div className="card">
+                <div className="card">
         
                          <h4 className="card-title">
                         
                          <Link to={ (post.postedBy._id==state._id)? "/profile": `/profile/${post.postedBy._id}`}>
-                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                         <img src={post.postedBy.pic} alt={post.postedBy.userName} style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />
+                         <div style={{ display: 'flex', alignItems: 'center', backgroundColor:'#D3D3D3 ', boxShadow:'1px'}}>
+
+
+                      
+                         <img src={ post.postedBy.pic} alt={post.postedBy.userName} style={{ width: '40px', height: '40px', borderRadius: '50%', marginRight: '10px' }} />
                        
                         <span>{post.postedBy.userName}</span>
+
+                        
                          </div>
                         </Link>
+                        {(post.postedBy._id==state._id) && <IconButton style={{marginLeft:"auto"}}aria-label="delete" onClick={()=>deletePost(post._id)}>
+                         <DeleteIcon />
+                        </IconButton>}
                           
 
                         
                         
                         
-                         {(post.postedBy._id==state._id) && <IconButton aria-label="delete" onClick={()=>deletePost(post._id)}>
-                         <DeleteIcon />
-                        </IconButton>}
+                        
                         
                          </h4>
+
+                         {/* showing text or photo */}
+
+                         {post.type=="text"  ?
+                         <div style={{marginLeft:"10px"}}className="home-card-image card-image">
+
+                            
+                        <h5>{post.photo}</h5>
+                       </div>
+                         
+                         :
+                         <div className="home-card-image card-image">
+
+                            
+                         <img alt="halwa" src={post.photo}/>
+                       </div>
+                       }
                         
-                           <div className="home-card-image card-image">
-                             <img alt="halwa" src={post.photo}/>
-                           </div>
+                           
                            <div className="card-content">
                            <div>
                            {post.likes.includes( state._id)?
@@ -288,21 +310,8 @@ const Home = () => {
                      
                                })
                            }
-</div>
+                </div>
     )
 }
 
 export default Home
-
-// 
-// {showComment && <div>
-//     {
-//         post.comments.map(comment =>{
-//              return(
-    // <h6 key={com._id}> <span style={{fontWeight:"500"}} >{com.postedBy.name} </span>:  {com.comment}</h6>
-    // )
-//         })
-//     }
-    
-    
-//     </div>}

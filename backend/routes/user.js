@@ -87,6 +87,29 @@ router.put("/unfollow",checkloggedin,function(req,res){
 
 })
 
+router.post("/search-users", function(req, res) {
+
+  console.log("Inside search-users");
+  const searchTerm = req.body.query; // Get the search term from query parameters
+
+  // Search for users based on name or username
+  user.find({
+    $or: [
+      { name: { $regex: searchTerm, $options: "i" } }, // Case-insensitive search for name
+      { username: { $regex: searchTerm, $options: "i" } } // Case-insensitive search for username
+    ]
+  })
+    .select("-password") // Exclude password field from the result
+    .exec(function(err, foundUsers) {
+      if (err) {
+        return res.status(422).json({ error: err });
+      }
+
+      console.log("search-result:"+foundUsers)
+      res.json({ users: foundUsers });
+    });
+});
+
 
 
 
@@ -99,6 +122,8 @@ router.put("/updatepic",checkloggedin,function(req,res){
     res.json({result});
   })
 })
+
+
 
 
 router.get("/halwa ", checkloggedin, function(req, res) {

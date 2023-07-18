@@ -116,7 +116,16 @@ const Profile  = ()=>{
                {
                    mypics.map(item=>{
                        return(
-                        <img key={item._id} className="item" src={item.photo} alt={item.title}/>  
+
+                        <>
+                       {item.type=="text"  ?<h5 className="item">{item.photo}</h5>
+ :
+ <img key={item._id} className="item" src={item.photo} alt={item.title}/>  
+
+}
+                        
+                        </>
+                       
                        )
                    })
                }

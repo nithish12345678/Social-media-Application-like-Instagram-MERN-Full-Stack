@@ -46,7 +46,7 @@ const Signin  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Instagram</h2>
+            <h2>Mediachat</h2>
             <input
             type="text"
             placeholder="email"
@@ -67,9 +67,9 @@ const Signin  = ()=>{
             <h5>
                 <Link to="/signup">Dont have an account ?</Link>
             </h5>
-            <h6>
+            {/* <h6>
                 <Link to="/reset">Forgot password ?</Link>
-            </h6>
+            </h6> */}
     
         </div>
       </div>

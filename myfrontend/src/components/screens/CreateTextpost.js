@@ -3,15 +3,16 @@ import M from 'materialize-css'
 
 
 import {useNavigate} from 'react-router-dom'
-const CreatePost = ()=>{
+const CreateTextpost = ()=>{
     const navigate = useNavigate()
     const [title,setTitle] = useState("")
-    const [body,setBody] = useState("")
-    const [image,setImage] = useState("")
+    const [text,setText] = useState("")
+
     const [url,setUrl] = useState("")
-    useEffect(()=>{
-       if(url){
-        fetch("http://localhost:5000/createpost",{
+  
+  
+   const postDetails = ()=>{
+    fetch("http://localhost:5000/createpost",{
             method:"post",
             headers:{
                 "Content-Type":"application/json",
@@ -19,9 +20,8 @@ const CreatePost = ()=>{
             },
             body:JSON.stringify({
                 title,
-                type:"photo",
-                body,
-                photo:url
+                type:"text",
+                photo:text
             })
         }).then(res=>res.json())
         .then(data=>{
@@ -37,25 +37,6 @@ const CreatePost = ()=>{
         }).catch(err=>{
             console.log(err)
         })
-    }
-    },[url])
-  
-   const postDetails = ()=>{
-       const data = new FormData()
-       data.append("file",image)
-       data.append("upload_preset",process.env.React_APP_upload_preset)
-       data.append("cloud_name",process.env.React_APP_cloud_name)
-       fetch(process.env.React_APP_cloudinary_Upload_API,{
-           method:"post",
-           body:data
-       })
-       .then(res=>res.json())
-       .then(data=>{
-          setUrl(data.secure_url)
-       })
-       .catch(err=>{
-           console.log("error",err)
-       })
    }
  
 
@@ -74,21 +55,13 @@ const CreatePost = ()=>{
             value={title}
             onChange={(e)=>setTitle(e.target.value)}
             />
-           <input
+           <textarea
             type="text"
-             placeholder="body"
-             value={body}
-            onChange={(e)=>setBody(e.target.value)}
+             placeholder="Enter text to share"
+             value={text}
+            onChange={(e)=>setText(e.target.value)}
              />
-           <div className="file-field input-field">
-            <div className="btn #64b5f6 blue darken-1">
-                <span>Uplaod Image</span>
-                <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
-            </div>
-            <div className="file-path-wrapper">
-                <input className="file-path validate" type="text" />
-            </div>
-            </div>
+        
             <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
             onClick={()=>postDetails()}
             
@@ -101,4 +74,4 @@ const CreatePost = ()=>{
 }
 
 
-export default CreatePost;
+export default CreateTextpost;

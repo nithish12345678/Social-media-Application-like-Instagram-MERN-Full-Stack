@@ -5,7 +5,11 @@ a{
 }
 
 .brand-logo,h2{
-  font-family: 'Grand Hotel', cursive;
+  font-family:"Copperplate",fantasy;
+  background-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff); 
+  background-clip: text; /* Apply the background to the text only */
+  -webkit-background-clip: text; /* For Safari */
+  color: transparent;
 }
 
 .mycard{

@@ -3,7 +3,7 @@ const {JWT_SECRET}=require("../keys");
 const user=mongoose.model("user");
 const jwt=require("jsonwebtoken");
 
-
+ 
 
 module.exports=(req,res,next) => {
     console.log("middle");

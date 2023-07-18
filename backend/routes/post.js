@@ -64,13 +64,18 @@ router.get("/myposts", checkloggedin, function(req, res) {
     })
 
 })
+
+
 router.post("/createpost", checkloggedin, function(req, res) {
-    const { title, body, photo } = req.body;
+    const {  type,title, body, photo } = req.body;
 
     if (!title || !photo) {
         return res.status(422).json({ error: "Please fill all details" })
     }
-    const post1 = new post({ title, body, photo, postedBy: req.user });
+    var post1;
+
+    post1=new post({type, title, body, photo, postedBy: req.user });
+   
 
     post1.save()
         .then(user => (res.json({ post: "saved succesfully " + user })))
