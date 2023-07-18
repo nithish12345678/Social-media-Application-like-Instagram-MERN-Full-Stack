@@ -46,7 +46,7 @@ const Signin  = ()=>{
    return (
       <div className="mycard">
           <div className="card auth-card input-field">
-            <h2>Mediachat</h2>
+            <h2>Mediashare</h2>
             <input
             type="text"
             placeholder="email"
