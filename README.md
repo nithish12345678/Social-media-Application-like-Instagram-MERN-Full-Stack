@@ -6,13 +6,15 @@ live: https://luminous-squirrel-90bbfa.netlify.app/
 You can login with any random email and password to test the application.
 
 
-Social Media Application:
-Tech stack: MERN Stack, RESTful API, Material UI, Postman
+# Social Media Application:
+## Tech stack: MERN Stack, RESTful API, Material UI, Postman
 • Developed a MERN stack-based social media application that enables users to create
 an account, login, post pictures, like posts, comment on posts, follow other users, and
 view posts of people they follow.
+
 • The application was built using React, Material UI for the frontend, Node.js and
 Express.js for the backend, and MongoDB for the database.
+
 • One of the key features of the application is its user authentication and authorization
 system, which ensures that only authorized users can access the application's
 functionalities. The application also features a user-friendly interface with intuitive
