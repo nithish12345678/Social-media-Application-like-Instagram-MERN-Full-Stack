@@ -4,6 +4,7 @@
 live: https://luminous-squirrel-90bbfa.netlify.app/
 
 You can login with any random email and password to test the application.
+![Screenshot 2024-01-07 224156](https://github.com/nithish12345678/Social-media-Application-like-Instagram-MERN-Full-Stack/assets/83687979/1993089f-2e9c-4914-b812-ef47c43bc419)
 
 
 # Social Media Application:
