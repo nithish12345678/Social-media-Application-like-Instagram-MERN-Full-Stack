@@ -1,5 +1,5 @@
 # Social-media-Application-like-Instagram-MERN-Full-Stack
-
+The Social Media Web Application is developed utilizing React.js, Node.js, Express.js, and MongoDB. This application enables users to register and log in, post images, share thoughts and texts, comment on posts, like posts, follow other users, and view other user profiles.
 
 live: https://luminous-squirrel-90bbfa.netlify.app/
 
