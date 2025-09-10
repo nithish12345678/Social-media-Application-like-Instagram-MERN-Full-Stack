@@ -13,7 +13,7 @@ email: james@gmail.com
 password; 123james
 
 # Social Media Application:
-## Tech stack: MERN Stack, RESTful API, Material UI, Postman
+## Tech stack: MERN Stack, RESTful API, Material UI, Postman, Github
 • Developed a MERN stack-based social media application that enables users to create
 an account, login, post pictures, like posts, comment on posts, follow other users, and
 view posts of people they follow.
